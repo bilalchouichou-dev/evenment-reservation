@@ -11,8 +11,12 @@ function SignUp() {
             <form className="flex flex-col mt-8 space-y-6 h-72 justify-evenly">
             <div className="rounded-md shadow-sm -space-y-px">
                 <div>
-                    <label htmlFor="name" className="sr-only">Name</label>
-                    <input id="name" name="name" type="text" autoComplete="name" required className="appearance-none rounded-t-xl relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Name" />
+                    <label htmlFor="first-name" className="sr-only">First Name</label>
+                    <input id="first-name" name="first-name" type="text" autoComplete="prenom" required className="appearance-none rounded-t-xl relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="First Name" />
+                </div>
+                <div>
+                    <label htmlFor="last-name" className="sr-only">Last Name</label>
+                    <input id="last-name" name="last-name" type="text" autoComplete="nom" required className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Last Name" />
                 </div>
                 <div>
                     <label htmlFor="email" className="sr-only">Email address</label>
@@ -23,11 +27,10 @@ function SignUp() {
                     <input id="password" name="password" type="password" autoComplete="new-password" required className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
                 </div>
                 <div>
-                <label htmlFor="confirm-password" className="sr-only">Password</label>
-                <input id="confirm-password" name="confirm-password" type="confirm-password" required className="appearance-none rounded-b-xl relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm Password" />
+                    <label htmlFor="confirm-password" className="sr-only">confirm Password</label>
+                    <input id="confirm-password" name="confirm-password" type="confirm-password" required className="appearance-none rounded-b-xl relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm Password" />
                 </div>
             </div>
-
             <div>
                 <button type="submit" className="w-full py-2 px-4 bg-[#17252A] hover:bg-indigo-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Sign up
