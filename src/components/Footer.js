@@ -23,7 +23,7 @@ function Footer() {
           </div>
           <div>
             <h2 className="text-2xl font-semibold mb-4 text-justify">A propos</h2>
-            <p>EventRise est une plateforme innovante qui simplifie la réservation d'événements. Notre mission est de vous offrir une expérience fluide et enrichissante, vous permettant de découvrir et de réserver facilement une variété d'événements culturels, artistiques, sportifs et éducatifs. Avec une interface intuitive et des fonctionnalités avancées, nous visons à être votre compagnon de confiance pour créer des souvenirs inoubliables et enrichir votre vie avec des expériences uniques.</p>
+            <p>{"EventRise est une plateforme innovante qui simplifie la réservation d'événements. Notre mission est de vous offrir une expérience fluide et enrichissante, vous permettant de découvrir et de réserver facilement une variété d'événements culturels, artistiques, sportifs et éducatifs. Avec une interface intuitive et des fonctionnalités avancées, nous visons à être votre compagnon de confiance pour créer des souvenirs inoubliables et enrichir votre vie avec des expériences uniques."}</p>
           </div>
           <div>
             <h2 className="text-2xl font-semibold mb-4">Quick Links</h2>
