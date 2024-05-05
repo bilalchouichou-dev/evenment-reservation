@@ -4,7 +4,7 @@ import logo from "@/../public/white.png";
 
 function EventHeader() {
   return (
-    <header class="flex flex-row justify-between items-center h-1/6 p-4 bg-[#3AAFA7]">
+    <header className="flex flex-row justify-between items-center h-1/6 p-4 bg-[#3AAFA7]">
         <Link href="/" className="flex items-center">
             <Image src={logo} alt="logo" className=" w-16 h-14" placeholder="blur"/>
             <h1 className="font-serif text-white text-3xl">

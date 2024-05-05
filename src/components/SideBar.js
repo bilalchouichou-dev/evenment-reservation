@@ -1,8 +1,50 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from "react";
+
+
 function EventsBar() {
+
+  const [villeList,setVilleList] = useState(null)
+  const [categories,setCategories] = useState(null)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const villeXhr = new XMLHttpRequest();
+        villeXhr.open("get", "/api/events/villes", true);
+        villeXhr.addEventListener("load", () => {
+          if (villeXhr.status !== 200) return alert("Error fetching cities: " + villeXhr.response);
+          const villeData = JSON.parse(villeXhr.response);
+          setVilleList(villeData);
+        });
+        villeXhr.addEventListener("error", () => {
+          alert("Error fetching cities");
+        });
+        villeXhr.send();
+  
+
+        const categoriesXhr = new XMLHttpRequest();
+        categoriesXhr.open("get", "/api/events/categories", true);
+        categoriesXhr.addEventListener("load", () => {
+          if (categoriesXhr.status !== 200) return alert("Error fetching categories: " + categoriesXhr.response);
+          const categoriesData = JSON.parse(categoriesXhr.response);
+          setCategories(categoriesData);
+        });
+        categoriesXhr.addEventListener("error", () => {
+          alert("Error fetching categories");
+        });
+        categoriesXhr.send();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
   return (
     <aside className="flex flex-col min-h-screen w-1/5 p-5 border-r-4 text-black">
       <div className=" flex flex-row  gap-4 mb-5">
@@ -16,29 +58,27 @@ function EventsBar() {
         </div>
         <div>
           <label for="prix" className=" text-xl">Prix:</label>
-          <input id="prix" name="prix" type="number" class="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="prix" />
+          <input id="prix" name="prix" min={1} type="number" className="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="prix" />
         </div>
         <div>
           <label for="ville" className=" text-xl">Ville:</label>
-          <input id="ville" name="ville" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="ville" />
+          <select id="ville" className="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="ville">
+              {villeList && villeList.map((event, index) => (
+                <option value={event.nomville}>{event.nomville}</option>
+              ))}
+              <option value="" selected></option>
+          </select>
         </div>
-        <div className="flex flex-col">
-          <label className=" text-xl ">Type:</label>
-          <div className="flex flex-col pl-4 pt-3">
-            <div className="flex gap-3">
-              <input id="type1" name="type" type="radio" value="type1" />
-              <label for="type1">Type 1</label>
-            </div>
-            <div className="flex gap-3">
-              <input id="type2" name="type" type="radio" value="type2"/>
-              <label for="type2">Type 2</label>
-            </div>
-            <div className="flex gap-3">
-              <input id="type3" name="type" type="radio" value="type3"/>
-              <label for="type3">Type 3</label>
-            </div>
-          </div>
+        <div>
+        <label for="categorie" className=" text-xl ">Catégorie :</label>
+          <select id="categorie" className="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="categorie">
+              {categories && categories.map((event, index) => (
+                <option value={event.titrecategorie}>{event.titrecategorie}</option>
+              ))}
+              <option value="" selected></option>
+          </select>
         </div>
+        <button id="filtrer" className="bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black mt-8">filtrer</button>
       </div>
     </aside>
   );
