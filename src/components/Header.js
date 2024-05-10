@@ -1,8 +1,12 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/../public/white.png";
+import { useRef } from "react";
 
 function Header() {
+
   return (
     <header className="flex flex-row justify-between items-center p-4 bg-[#3AAFA7] ">
         <Link href="/" className="flex items-center">
@@ -12,7 +16,7 @@ function Header() {
                 <span className="text-yellow-400">Rise</span>
             </h1>
         </Link>
-
+        
         <nav className="flex items-center space-x-5 font-semibold text-lg">
             <Link href="/" className="text-[#17252A] hover:text-yellow-400 ">Accueil</Link>
             <Link href="/events" className="text-[#17252A] hover:text-yellow-400">Événements</Link>

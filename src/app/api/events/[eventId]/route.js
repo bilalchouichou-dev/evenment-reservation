@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function GET(request,{params}) {
   try {
     const result =
-      await sql `SELECT idevent,titre,places,prix,date,location,nomville,titrecategorie,description
+      await sql `SELECT idevent,titre,places,prix,TO_CHAR(date, 'YYYY/MM/DD') AS date,location,nomville,titrecategorie,description
                   FROM event
                   INNER JOIN ville ON event.idville = ville.idville
                   INNER JOIN categories ON event.idcategorie = categories.id
