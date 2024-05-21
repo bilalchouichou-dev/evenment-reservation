@@ -39,7 +39,7 @@ function EventsMain({eventsData , setEventsData}) {
   console.log("rendrering")
 
   return (
-    <main className="flex flex-row min-h-screen w-4/5 p-9 gap-6 gap-y-6 flex-wrap">
+    <main className="grid gap-6 min-h-screen p-5 gap-y-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full">
       {/*<EventCard id={10} titre={"arabic games awards"} ville={"fes"} date={"10/12/2024"} imageSrc={festival}/>*/}
       {eventsData && eventsData.map((event, index) => (
         <EventCard
@@ -49,7 +49,7 @@ function EventsMain({eventsData , setEventsData}) {
           titre={event.titre} 
           ville={event.nomville}  
           date={event.date} 
-          /*imageSrc={event.imageSrc}*//>
+          /*imageSrc={event.imageSrc} flex flex-row min-h-screen w-4/5 p-9 gap-6 gap-y-6 flex-wrap*//>
       ))}
     </main>
   );

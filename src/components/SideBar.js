@@ -5,9 +5,10 @@ import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState } from "react";
+import {creationPath} from "@/functions/creationUrl"
 
 
-function EventsBar() {
+function EventsBar({eventsData , setEventsData}) {
 
   const [villeList,setVilleList] = useState(null)
   const [categories,setCategories] = useState(null)
@@ -51,18 +52,18 @@ function EventsBar() {
     fetchData();
   }, []);
   const filtering = async ()=>{
-    date=dateRef.current.value
-    prix=prixRef.current.value
-    ville=villeRef.current.value
-    categorie=categorieRef.current.value
-    if(date!= '' || prix!= '' || ville!='' || categorie!=''){
+    let date=dateRef.current.value
+    let prix=prixRef.current.value
+    let ville=villeRef.current.value
+    let categorie=categorieRef.current.value
+    if(date != '' || prix != '' || ville !='' || categorie !=''){
       try {
         const villeXhr = new XMLHttpRequest();
-        villeXhr.open("get", "/api/events/filter" + "?date=" + date +"&prix=" + prix + "&ville=" + ville + "&categorie=" + categorie, true);
+        villeXhr.open("get", creationPath("/api/events/filtrer",prix,date,categorie,ville) , true);
         villeXhr.addEventListener("load", () => {
           if (villeXhr.status !== 200) return alert("Error fetching cities: " + villeXhr.response);
           const villeData = JSON.parse(villeXhr.response);
-          setVilleList(villeData);
+          setEventsData(villeData);
         });
         villeXhr.addEventListener("error", () => {
           alert("Error fetching cities");
@@ -73,9 +74,10 @@ function EventsBar() {
         console.error("Error fetching data:", error);
       }
     }
+    console.log(creationPath("/api/events/filter",prix,date,categorie,ville))
   }
   return (
-    <aside className="flex flex-col min-h-screen w-1/5 p-5 border-r-4 text-black">
+    <aside className="flex flex-col min-h-screen w-[25%] min-w-72 p-5 border-r-4 text-black">
       <div className=" flex flex-row  gap-4 mb-5">
         <FontAwesomeIcon icon={faSliders} className=" h-6 w-6"/>
         <span className=" text-xl font-semibold">filtrer</span>
@@ -107,7 +109,7 @@ function EventsBar() {
               <option value="" selected></option>
           </select>
         </div>
-        <button id="filtrer" className="bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black mt-8">filtrer</button>
+        <button id="filtrer"onClick={filtering} className="bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black mt-8">filtrer</button>
       </div>
     </aside>
   );

@@ -10,8 +10,12 @@ import { useRef } from "react";
 function EventHeader({eventsData , setEventsData}) {
     const searchRef = useRef();
     const searching = async()=>{
+        const searchTitle = searchRef.current.value
+        if(searchTitle == '' || !searchTitle || searchTitle == undefined)
+        {
+          return null
+        }
         try {
-            const searchTitle = searchRef.current.value
             console.log(searchTitle)
             const xhr = new XMLHttpRequest();
               xhr.open("get", "/api/events/search" + "?search=" + searchTitle , true);
