@@ -1,11 +1,13 @@
 'use client';
-
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/../public/white.png";
 import { useRef } from "react";
 
-function Header() {
+function Header () {
+
+    const session = useSession();
 
   return (
     <header className="flex flex-row justify-between items-center p-4 bg-[#3AAFA7] ">
@@ -26,8 +28,14 @@ function Header() {
         </nav>
 
         <div className="flex space-x-4">
-            <Link href="/sign-up" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">{"S'inscrire"}</Link>
+            {session?
+            <Link href="/sign-in" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">Se Déconnecter</Link>
+            :
+            <>
             <Link href="/sign-in" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">Se connecter</Link>
+            <Link href="/sign-up" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">{"S'inscrire"}</Link>
+            </>
+            }
         </div>
     </header>
   );

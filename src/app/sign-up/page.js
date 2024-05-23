@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 
 function SignUp() {
-    const [isBtnDisabled , setisBtnDisabled] = useState()
+    const [isBtnDisabled , setisBtnDisabled] = useState(true)
     const firstName = useRef()
     const lastName = useRef()
     const username = useRef()
@@ -25,14 +25,18 @@ function SignUp() {
             signUpBtn.current.classList.add('bg-[#17252A]')
         }
     }
-    
+    useEffect(()=>{
+        changingButtonAppearance('inactive')
+    },[])
+
 
 
     const validationSignUp = () => {
         const namesRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{1,40}$/
-        const usernameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{8,32}$/
-        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
+        const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{8,32}$/
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,32}$/;
         setisBtnDisabled(true)
+        console.log(username.current.value)
         changingButtonAppearance('inactive')
         if(!namesRegex.test(firstName.current.value) ){
             errorLigne.current.innerText = 'your first name must start with alphabetics and less than 40 characters'
@@ -52,9 +56,9 @@ function SignUp() {
             setisBtnDisabled(false)
         }
     }
-    const Verification = () => {
-        console.log("clicked")
+    const signUp = (e) => {
         try {
+              e.preventDefault();
               const firstNameVal = firstName.current.value;
               const lastNameVal = lastName.current.value;
               const usernameVal = username.current.value;
@@ -81,7 +85,7 @@ function SignUp() {
             <div className="min-h-screen flex items-center justify-center bg-gray-50">
             <div className="max-w-md w-full p-6 rounded-lg shadow-lg bg-[#3AAFA7]">
                 <h2 className="text-center text-3xl font-extrabold text-gray-900">Sign up for an account</h2>
-                <div className="flex flex-col mt-8 space-y-6 h-72 justify-evenly">
+                <form className="flex flex-col mt-8 space-y-6 h-72 justify-evenly" onSubmit={signUp}>
                 <div className="rounded-md shadow-sm -space-y-px">
                     <div>
                         <label htmlFor="first-name" className="sr-only" >First Name</label>
@@ -105,11 +109,11 @@ function SignUp() {
                     </div>
                 </div>
                 <div>
-                    <button type="button" ref={signUpBtn} onClick={Verification} className="w-full py-2 px-4 bg-[#17252A] hover:bg-indigo-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" disabled={isBtnDisabled}>
+                    <button type="submit" ref={signUpBtn} className="w-full py-2 px-4 bg-[#17252A] hover:bg-indigo-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" disabled={isBtnDisabled}>
                     Sign up
                     </button>
                 </div>
-                </div>
+                </form>
                 <p ref={errorLigne} className=" text-red-600 h-7 text-center font-semibold"> </p>
             </div>
             </div>

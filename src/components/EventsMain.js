@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 
 
 function EventsMain({eventsData , setEventsData}) {
-  const [searchTitle,setSearchTitle] = useState(null)
   
   useEffect(()=> {
     const fetchData = async() => {

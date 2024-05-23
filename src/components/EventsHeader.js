@@ -16,7 +16,6 @@ function EventHeader({eventsData , setEventsData}) {
           return null
         }
         try {
-            console.log(searchTitle)
             const xhr = new XMLHttpRequest();
               xhr.open("get", "/api/events/search" + "?search=" + searchTitle , true);
               xhr.addEventListener("load", () => {
