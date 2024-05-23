@@ -95,7 +95,7 @@ function EventsBar({eventsData , setEventsData}) {
           <label for="ville" className=" text-xl">Ville:</label>
           <select ref={villeRef} id="ville" className="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="ville">
               {villeList && villeList.map((event, index) => (
-                <option value={event.nomville}>{event.nomville}</option>
+                <option key={index} value={event.nomville}>{event.nomville}</option>
               ))}
               <option value="" selected></option>
           </select>
@@ -104,7 +104,7 @@ function EventsBar({eventsData , setEventsData}) {
         <label for="categorie" className=" text-xl ">Catégorie :</label>
           <select ref={categorieRef} id="categorie" className="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="categorie">
               {categories && categories.map((event, index) => (
-                <option value={event.titrecategorie}>{event.titrecategorie}</option>
+                <option key={index} value={event.titrecategorie}>{event.titrecategorie}</option>
               ))}
               <option value="" selected></option>
           </select>
