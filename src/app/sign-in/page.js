@@ -8,6 +8,7 @@ import { useRef } from "react";
 function SignIn() {
   const usernameRef = useRef()
   const passwordRef = useRef()
+  const errorLigne = useRef()
 
   const handleSubmit = async (e) => {
 
@@ -17,7 +18,15 @@ function SignIn() {
       password: passwordRef.current.value,
       redirect: false,
     });
-
+    if(res.status===200){
+      errorLigne.current.classList.remove('text-red-700')
+      errorLigne.current.classList.add('text-green-700')
+      errorLigne.current.innerText = 'vous êtes maintenant connecter avec succès !'
+    }else{
+      errorLigne.current.classList.remove('text-green-700')
+      errorLigne.current.classList.add('text-red-700')
+      errorLigne.current.innerText = 'Les identifiants fournis sont incorrects. Veuillez réessayer.'
+    }
     console.log(res);
   };
 
@@ -44,6 +53,7 @@ function SignIn() {
             </button>
           </div>
         </form>
+        <p ref={errorLigne} className=" text-red-600 h-7 text-center font-semibold mb-4"> </p>
       </div>
     </div>
   );

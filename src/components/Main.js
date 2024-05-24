@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
 import festival from "@/../public/festival.jpg";
@@ -42,7 +43,6 @@ function Main() {
         </div>
       </section>
       <section>
-
       </section>
     </main>
   );

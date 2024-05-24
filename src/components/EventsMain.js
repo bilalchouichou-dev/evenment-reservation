@@ -48,7 +48,7 @@ function EventsMain({eventsData , setEventsData}) {
           titre={event.titre} 
           ville={event.nomville}  
           date={event.date} 
-          /*imageSrc={event.imageSrc} flex flex-row min-h-screen w-4/5 p-9 gap-6 gap-y-6 flex-wrap*//>
+          {...event.imageid && { imageId: event.imageid }} />
       ))}
     </main>
   );
