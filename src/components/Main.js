@@ -9,8 +9,8 @@ import workshop from "@/../public/workshop.jpg";
 
 function Main() {
   return (
-    <main className="flex justify-center flex-col items-center h-[500 px]">
-      <section className="flex justify-center flex-col items-center gap-14 pt-32 pb-32 text-white bg-[#3AAFA7]" >
+    <main className="flex justify-center flex-col items-center">
+      <section className="flex justify-center flex-col items-center gap-14 pt-32 pb-32 text-white bg-[#3AAFA7] h-[43rem]" >
         <div className="flex flex-col justify-center items-center gap-7 w-2/3 text-start">
           <h1 className="font-serif text-4xl font-semibold">
               {"\"Profitez de l'opportunité de créer des souvenirs inoubliables, tout en économisant du temps et de l'effort grâce à EventRise\""}

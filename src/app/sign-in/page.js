@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 
 function SignIn() {
@@ -53,7 +53,7 @@ function SignIn() {
             </button>
           </div>
         </form>
-        <p ref={errorLigne} className=" text-red-600 h-7 text-center font-semibold mb-4"> </p>
+        <p ref={errorLigne} className="h-7 text-center font-semibold mb-4"> </p>
       </div>
     </div>
   );
