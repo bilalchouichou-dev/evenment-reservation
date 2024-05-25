@@ -6,8 +6,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/../public/white.png";
-import { useState, useRef } from "react";
-import { redirect } from "next/navigation";
+import { useState,useEffect ,useRef } from "react";
 
 function Header () {
     const profileOptionsRef = useRef()
@@ -23,18 +22,22 @@ function Header () {
   return (
     <header className="flex flex-row justify-between items-center p-4 bg-[#3AAFA7] ">
         {isPOptionsAffiche&&(
-            <ul ref={profileOptionsRef} className="absolute bg-white text-black rounded-lg p-3 top-20 right-4 font-semibold text-start">
-            <li className="flex gap-3 items-center mb-2">
-                <FontAwesomeIcon icon={faUser} className=" h-5 w-5"/>
-                dashboard
-            </li>
-            <li className='flex gap-3 items-center'>
-                <FontAwesomeIcon icon={faRightFromBracket} className=" h-5 w-5"/>
-                deconnecter
-            </li>
+            <ul ref={profileOptionsRef} className="absolute z-40 bg-[#DEF2F1] text-black rounded-lg p-1 top-5 right-4 font-semibold text-start">
+              <li className='text-center mb-2 p-2 rounded-lg w-4/6'>{session.user.username}</li>
+              <li> 
+                <Link href='#' className="flex gap-2 items-center mb-2 hover:bg-gray-200 p-2 rounded-lg">
+                  <FontAwesomeIcon icon={faUser} className=" h-5 w-5"/>
+                  <span>dashboard</span>
+                </Link> 
+              </li>
+              <li >
+                <Link href="/api/auth/signout?callbackUrl=/" className="flex gap-2 items-center hover:bg-gray-200 p-2 rounded-lg ">
+                  <FontAwesomeIcon icon={faRightFromBracket} className=" h-5 w-5"/>
+                  <span>Se Deconnecter</span>
+                </Link>
+              </li>
             </ul>
         )}
-        
         <Link href="/" className="flex items-center">
             <Image src={logo} alt="logo" className=" w-16 h-14" placeholder="blur"/>  
             <h1 className="font-serif text-white text-3xl">
@@ -54,8 +57,7 @@ function Header () {
         <div className="flex space-x-4 items-center">
                 {session ? (
                     <>
-                    <Link href="/api/auth/signout?callbackUrl=/" className="bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black ">Se Deconnecter</Link>
-                    <Image onClick={()=>{isPOptionsAffiche?setIsPOptionsAffich(false):setIsPOptionsAffich(true)}} src={'/no-profile.png'} alt="profile" width={200} height={200} className=" w-14 h-14"/>
+                        <Image onClick={()=>{isPOptionsAffiche?setIsPOptionsAffich(false):setIsPOptionsAffich(true)}} src={'/no-profile.png'} alt="profile" width={200} height={200} className=" w-14 h-14 hover:cursor-pointer z-50"/>
                     </>
                 ) : (
                     <>

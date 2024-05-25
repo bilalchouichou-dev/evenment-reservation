@@ -25,13 +25,20 @@ export async function GET(request) {
             conditions.push('nomville = ' + ville);
             index++
         }
+        if (categorie) {
+            categorie = "\'" + categorie + "\'"
+            conditions.push('titrecategorie = ' + categorie);
+            index++
+        }
 
         const conditionStm = conditions.length ? 'WHERE ' + conditions.join(' AND ') : '';
 
         const query = `
-            SELECT event.idevent, event.titre, ville.nomville, TO_CHAR(event.date, 'YYYY/MM/DD') AS date
+            SELECT event.idevent, event.titre, ville.nomville, TO_CHAR(event.date, 'YYYY/MM/DD') AS date, public_id AS imageId
             FROM event
             INNER JOIN ville ON ville.idville = event.idville
+            INNER JOIN categories ON categories.id = event.idcategorie
+            LEFT JOIN events_images ON events_images.idevent = event.idevent
             ${conditionStm}
         `;
         console.log(query)

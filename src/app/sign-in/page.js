@@ -3,15 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 function SignIn() {
   const usernameRef = useRef()
   const passwordRef = useRef()
   const errorLigne = useRef()
-
+  const router = useRouter()
   const handleSubmit = async (e) => {
-
+    errorLigne.current.innerText = '';
     e.preventDefault();
     const res = await signIn("credentials", {
       username: usernameRef.current.value,
@@ -22,6 +23,7 @@ function SignIn() {
       errorLigne.current.classList.remove('text-red-700')
       errorLigne.current.classList.add('text-green-700')
       errorLigne.current.innerText = 'vous êtes maintenant connecter avec succès !'
+      setTimeout(()=>{router.back()},1000)
     }else{
       errorLigne.current.classList.remove('text-green-700')
       errorLigne.current.classList.add('text-red-700')

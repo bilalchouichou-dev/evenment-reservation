@@ -2,24 +2,26 @@
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/../public/white.png";
 import { useSession } from "next-auth/react";
+import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/navigation';
 
 
 
-function EventHeader({eventsData , setEventsData}) {
-
+function EventHeader() {
+    const router = useRouter()
     const profileOptionsRef = useRef()
 
     const [isPOptionsAffiche,setIsPOptionsAffich]=useState(false)
 
-    const { data: session } = useSession({
+    const { data: session, status} = useSession({
       required: true,
       onUnauthenticated() {
-      },
+      }
     });
     const searchRef = useRef();
     const searching = async()=>{
@@ -28,30 +30,16 @@ function EventHeader({eventsData , setEventsData}) {
         {
           return null
         }
-        try {
-            const xhr = new XMLHttpRequest();
-              xhr.open("get", "/api/events/search" + "?search=" + searchTitle , true);
-              xhr.addEventListener("load", () => {
-              if (xhr.status != 200) return alert("error" + xhr.response);
-              let data = JSON.parse(xhr.response);
-              setEventsData(data);
-                console.log("this is data from searrchc" + data)
-              });
-              xhr.addEventListener("error", () => {
-              alert("error");
-              });
-              xhr.send()
-            setEventsData(data)
-          }catch (error) {
-              console.error('Error fetching data:', error);
-          }
+        router.push(window.location.pathname + '?search=' + searchTitle)
     }
 
   return (
     <header className="flex flex-row justify-between items-center h-1/6 p-3 bg-[#3AAFA7]">
+
         {isPOptionsAffiche&&(
-            <ul ref={profileOptionsRef} className="absolute z-50 bg-white text-black rounded-lg p-1 top-20 right-4 font-semibold text-start">
-              <li >
+            <ul ref={profileOptionsRef} className="absolute z-40 bg-[#DEF2F1] text-black rounded-lg p-1 top-5 right-4 font-semibold text-start">
+              <li className='text-center mb-2 p-2 rounded-lg w-4/6'>{session.user.username}</li>
+              <li>
                 <Link href='#' className="flex gap-2 items-center mb-2 hover:bg-gray-200 p-2 rounded-lg">
                   <FontAwesomeIcon icon={faUser} className=" h-5 w-5"/>
                   <span>dashboard</span>
@@ -77,16 +65,15 @@ function EventHeader({eventsData , setEventsData}) {
             <button className="bg-[#17252A] p-2 rounded-lg text-white hover:bg-yellow-400 hover:text-black" onClick={searching}>Rechercher</button>
         </div>
         <div className="flex space-x-4 items-center">
-                {session ? (
-                    <>
-                      <Image onClick={()=>{isPOptionsAffiche?setIsPOptionsAffich(false):setIsPOptionsAffich(true)}} src={'/no-profile.png'} alt="profile" width={200} height={200} className=" w-16 h-16"/>
-                    </>
-                ) : (
-                    <>
-                    <Link href="/sign-in" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">Se Connecter</Link>
-                    <Link href="/sign-up" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">{"S'inscrire"}</Link>
-                    </>
-                )}
+              {session && (
+                 <Image onClick={()=>{isPOptionsAffiche?setIsPOptionsAffich(false):setIsPOptionsAffich(true)}} src={'/no-profile.png'} alt="profile" width={200} height={200} className="z-50 w-16 h-16 hover:cursor-pointer"/>
+              )}
+              {session==null && (
+                <>
+                  <Link href="/sign-in" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">Se Connecter</Link>
+                  <Link href="/sign-up" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">{"S'inscrire"}</Link>
+                </>
+              )}
         </div>
     </header>
   );
