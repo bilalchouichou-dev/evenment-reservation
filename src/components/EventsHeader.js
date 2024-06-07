@@ -70,7 +70,7 @@ function EventHeader() {
               )}
               {session==null && (
                 <>
-                  <Link href="/sign-in" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">Se Connecter</Link>
+                  <Link href="/sign-in" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black ">Se Connecter</Link>
                   <Link href="/sign-up" className=" bg-[#17252A] p-3 rounded-lg text-white hover:bg-yellow-400 hover:text-black">{"S'inscrire"}</Link>
                 </>
               )}

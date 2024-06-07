@@ -1,18 +1,32 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-function EventsMain({ titre, ville, imageSrc, date, prix, location, description, place}) {
+import { CldImage } from 'next-cloudinary';
+
+
+function EventsMain({ titre, ville, images, date, prix, location, description, place}) {
+    console.log(images)
   return (
         <main className=" p-9 text-black" >
             <section className=" flex gap-8 min-h-[30rem] justify-between">
-                <div className=" flex justify-between items-center w-6/12">
-                    <FontAwesomeIcon icon={faChevronLeft} className=" h-10 w-10 hover:scale-125"/>
+                <div className="flex justify-between items-center w-6/12">
+                    <FontAwesomeIcon icon={faChevronLeft} className=" h-10 w-10 hover:scale-125 hover:cursor-pointer"/>
                     <span className=" w-5/6">
-                        <Image src={imageSrc} alt="Image de l'événement" className="w-full h-[30rem] object-center rounded-xl"/>
+                        {images?images.map((image, index) => (
+                            <CldImage
+                                key={index}
+                                width={500}
+                                height={500}
+                                src={image}
+                                alt="Image de l'événement"
+                                className="w-full h-[30rem] object-center rounded-xl"
+                            />
+                        )):(<p className=" text-center font-semibold text-red-700">désolé il n'existe pas d'images pour le moment</p>)}
                     </span>
-                    <FontAwesomeIcon icon={faChevronRight} className=" h-10 w-10 hover:scale-125"/>
+                    <FontAwesomeIcon icon={faChevronRight} className=" h-10 w-10 hover:scale-125 hover:cursor-pointer"/>
                 </div>
                 <div className="flex flex-col w-6/12 justify-between min-h-[30rem]">
                     <h1 className="text-2xl font-semibold mb-2 font-serif capitalize">{titre}</h1>

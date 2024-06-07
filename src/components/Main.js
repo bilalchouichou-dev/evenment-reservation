@@ -25,30 +25,33 @@ function Main() {
     <h2 className="font-serif text-4xl w-2/3 font-semibold text-center">
       {"Nous vous proposons une variété d'événements"}
     </h2>
-    <div className=" flex justify-between items-center w-2/3 gap-6 text-center text-[#17252A]">
-      <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105">
-        <Image src={concert} alt="Concert" width={120} height={120} className="mb-4 rounded-full" />
-        <div className="text-xl font-semibold">Concerts</div>
-      </div>
-      <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105">
-        <Image src={festival} alt="Festivals" width={120} height={120} className="mb-4 rounded-full" />
-        <div className="text-xl font-semibold">Festivals</div>
-      </div>
-      <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105">
-        <Image src={sport} alt="Sports" width={120} height={120} className="mb-4 rounded-full" />
-        <div className="text-xl font-semibold">Sports</div>
-      </div>
-      <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105">
-        <Image src={workshop} alt="workshop" width={120} height={120} className="mb-4 rounded-full" />
-        <div className="text-xl font-semibold">Workshops</div>
-      </div>
-      <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105">
-        <Image src={'/entertainement.jpeg'} alt="entertainement" width={120} height={110} className="mb-4 rounded-full" />
-        <div className="text-xl font-semibold">Entertainement</div>
-      </div>
-      <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105">
-        <Image src={workshop} alt="workshop" width={120} height={120} className="mb-4 rounded-full" />
-        <div className="text-xl font-semibold">Workshops</div>
+
+    <div className="flex justify-between items-center w-fit">
+      <div className="flex justify-between items-center gap-6 text-center text-[#17252A] ">
+        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+          <Image src={concert} alt="Concert" width={120} height={120} className="mb-4 rounded-full" />
+          <div className="text-xl font-semibold">Concerts</div>
+        </div>
+        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+          <Image src={festival} alt="Festivals" width={120} height={120} className="mb-4 rounded-full" />
+          <div className="text-xl font-semibold">Festivals</div>
+        </div>
+        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+          <Image src={sport} alt="Sports" width={120} height={120} className="mb-4 rounded-full" />
+          <div className="text-xl font-semibold">Sports</div>
+        </div>
+        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+          <Image src={workshop} alt="workshop" width={120} height={120} className="mb-4 rounded-full" />
+          <div className="text-xl font-semibold">Workshops</div>
+        </div>
+        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+          <Image src={'/entertainement.jpeg'} alt="entertainement" width={120} height={110} className="mb-4 rounded-full" />
+          <div className="text-xl font-semibold">Entertainement</div>
+        </div>
+        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+          <Image src={workshop} alt="workshop" width={120} height={120} className="mb-4 rounded-full" />
+          <div className="text-xl font-semibold">Workshops</div>
+        </div>
       </div>
     </div>
   </section>

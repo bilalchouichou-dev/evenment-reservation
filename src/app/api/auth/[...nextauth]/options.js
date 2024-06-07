@@ -2,7 +2,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt, { compare } from "bcrypt";
 import { sql } from '@vercel/postgres';
 
-//import { pages } from "next/dist/build/templates/app-page";
 
 export const options = {
   providers: [
@@ -16,7 +15,7 @@ export const options = {
             return null;
           }
 
-          const result = await sql`SELECT * FROM users WHERE username = ${credentials.username}`;
+          const result = await sql`SELECT * FROM users WHERE users.username = ${credentials.username} ;`;
           const existingUser = result.rows[0];
 
           if (!existingUser) {
@@ -31,14 +30,13 @@ export const options = {
             return null;
           }
 
-          // User authenticated successfully
           const user = {
             id: existingUser.iduser,
             username: existingUser.username,
             prenom: existingUser.prenom,
             nom: existingUser.nom,
+            role: existingUser.role,
           };
-          console.log("User authenticated:", user);
           return user;
         } catch (error) {
           console.error("Error during user authentication:", error);
@@ -57,6 +55,7 @@ export const options = {
         token.username = user.username;
         token.prenom = user.prenom;
         token.nom = user.nom;
+        token.role = user.role;
       }
       return token;
     },
@@ -66,6 +65,7 @@ export const options = {
         session.user.username = token.username;
         session.user.prenom = token.prenom;
         session.user.nom = token.nom;
+        session.user.role = token.role;
       }
       return session;
     }
