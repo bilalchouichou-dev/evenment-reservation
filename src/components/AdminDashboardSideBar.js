@@ -28,7 +28,7 @@ function DashSide({setMain}) {
       <div className="flex flex-col">
         <button ref={eventManagementRef} className="text-left bg-white px-10 py-4 text-lg font-semibold text-gray-800 hover:text-gray-600" onClick={(e)=>{changingSections(e,AddEventRef,complaintManagementRef,'eventManagement')}}>Gestion des événements</button>
         <button ref={AddEventRef} className="text-left px-10 py-4 text-lg font-semibold text-gray-800 hover:text-gray-600" onClick={(e)=>{changingSections(e,eventManagementRef,complaintManagementRef,'eventAdd')}}>Ajouter des événements</button>
-        <button ref={complaintManagementRef} className="text-left px-10 py-4 text-lg font-semibold text-gray-800 hover:text-gray-600" onClick={(e)=>{changingSections(e,AddEventRef,eventManagementRef,null)}}>Gestion des plaintes</button>
+        <button ref={complaintManagementRef} className="text-left px-10 py-4 text-lg font-semibold text-gray-800 hover:text-gray-600" hidden onClick={(e)=>{changingSections(e,AddEventRef,eventManagementRef,null)}}>Gestion des plaintes</button>
       </div>
     </aside>
   );

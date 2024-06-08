@@ -17,6 +17,7 @@ import { useSession } from "next-auth/react";
 function dashboard() {
     const [villeList,setVilleList] = useState(null)
     const [categories,setCategories] = useState(null)
+    const router = useRouter()
     useEffect(() => {
         const fetchData = () => {
           fetch("/api/events/villes")
@@ -67,7 +68,7 @@ function dashboard() {
 
     useEffect(()=>{
         if(session&&session.user.role == 'user'){
-            setUnauthenticatedMsg("les utilisateurs non pas d'accées a cette page")
+            setUnauthenticatedMsg("les utilisateurs non pas d'accées a cette page. Redirection dans 3 secondes.")
             const timer = setTimeout(() => {
                 router.push('/sign-in');
             }, 3000);

@@ -93,7 +93,7 @@ const EventTable = ({session,events,categories,villes}) => {
       <div className="container mx-auto p-4">
         <dialog ref={suppDialogRef}  className="p-5 rounded-md shadow-lg bg-white">
           <h2 className="text-lg font-semibold mb-4">Confirmer la suppression</h2>
-          <p>{'Êtes-vous sûr de vouloir supprimer cet élément ?' + eventId} </p>
+          <p>{'Êtes-vous sûr de vouloir supprimer cet élément ?'} </p>
           <div className="mt-4 flex justify-end">
             <button className="bg-red-500 text-white px-4 py-2 rounded mr-2" onClick={()=>{supprimerEvent(eventId);suppDialogRef.current.close()}} >Oui</button>
             <button className="bg-gray-300 text-black px-4 py-2 rounded" onClick={()=>{suppDialogRef.current.close()}}>Non</button>
@@ -120,7 +120,7 @@ const EventTable = ({session,events,categories,villes}) => {
             </div>
             <div>
               <label className="block text-gray-700">Location</label>
-              <input ref={modifLocationRef} type="text" className="w-full p-2 border rounded" required/>
+              <input ref={modifLocationRef} type="text" className="w-full p-2 border rounded" />
             </div>
             <div>
               <label className="block text-gray-700">Ville</label>
@@ -140,7 +140,7 @@ const EventTable = ({session,events,categories,villes}) => {
             </div>
             <div>
               <label className="block text-gray-700">Description</label>
-              <textarea ref={modifDescriptionRef} className="w-full p-2 border rounded" rows="4" defaultValue={eventToModify&&(eventToModify.description)} required></textarea>
+              <textarea ref={modifDescriptionRef} className="w-full p-2 border rounded" rows="4" defaultValue={eventToModify&&(eventToModify.description)} ></textarea>
             </div>
             <div className="mt-4 flex justify-end">
               <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={() => {modifDialogRef.current.close()}}>Modifier</button>
@@ -158,8 +158,8 @@ const EventTable = ({session,events,categories,villes}) => {
               <th className="bg-gray-200 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell">Prix</th>
               <th className="bg-gray-200 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell">Nombre De Place</th>
               <th className="bg-gray-200 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell">Categorie</th>
-              <th className="bg-gray-200 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell">Description</th>
-              <th className="bg-gray-200 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell">Options</th>
+              <th className="bg-gray-200 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell w-[10%]">Description</th>
+              <th className="bg-gray-200 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell w-[20%]">Options</th>
             </tr>
           </thead>
           <tbody className="block md:table-row-group text-black">
@@ -171,7 +171,7 @@ const EventTable = ({session,events,categories,villes}) => {
                 <td className="p-2 md:border md:border-gray-300 text-left block md:table-cell">{currentEvent.prix}</td>
                 <td className="p-2 md:border md:border-gray-300 text-left block md:table-cell">{currentEvent.places}</td>
                 <td className="p-2 md:border md:border-gray-300 text-left block md:table-cell">{currentEvent.titrecategorie}</td>
-                <td className="p-2 md:border md:border-gray-300 text-left block md:table-cell">{currentEvent.description}</td>
+                <td className="p-2 md:border md:border-gray-300 text-left block md:table-cell">{(currentEvent.description&&currentEvent.description.length > 100 )?(currentEvent.description.slice(0,100) + ' ...'):currentEvent.description}</td>
                 <td className="p-2 md:border md:border-gray-300 text-left block md:table-cell"><button className="bg-blue-300 text-white px-4 py-2 rounded mr-2 mb-2" onClick={() =>{setEventToModify(currentEvent);modifDialogRef.current.showModal()}}>Modifier</button><button className="bg-red-300 text-white px-4 py-2 rounded" onClick={()=>{setEventId(currentEvent.idevent);suppDialogRef.current.showModal();}}>Supprimer</button></td>
               </tr>
             ))}

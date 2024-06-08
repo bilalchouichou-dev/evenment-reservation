@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request) {
 
   const namesRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{1,40}$/
-  const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{8,32}$/
+  const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{7,32}$/
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,32}$/;
 
   try {
@@ -21,7 +21,7 @@ export async function POST(request) {
         return NextResponse.json( { message: 'données erronée' }, { status: 400 });
      }
      const hashedPassword = await bcrypt.hash(passwordVal, 10);
-     await sql `INSERT INTO users (prenom,nom,username, password) VALUES ( ${firstNameVal},${lastNameVal},${usernameVal},${hashedPassword})`;
+     await sql `INSERT INTO users (prenom,nom,username, password, role) VALUES ( ${firstNameVal},${lastNameVal},${usernameVal},${hashedPassword},'user')`;
 
     return NextResponse.json( { message: 'Signup successful, you can now login with your account' }, { status: 200 });
   } catch (error) {

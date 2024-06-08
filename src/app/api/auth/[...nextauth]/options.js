@@ -39,7 +39,7 @@ export const options = {
           };
           return user;
         } catch (error) {
-          console.error("Error during user authentication:", error);
+          console.error("Error during user authentication:" + error);
           return null;
         }
       },

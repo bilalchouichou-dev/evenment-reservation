@@ -33,22 +33,22 @@ function SignUp() {
 
     const validationSignUp = () => {
         const namesRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{1,40}$/
-        const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{8,32}$/
+        const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{7,32}$/
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,32}$/;
         setisBtnDisabled(true)
         console.log(username.current.value)
         changingButtonAppearance('inactive')
         if(!namesRegex.test(firstName.current.value) ){
-            errorLigne.current.innerText = 'your first name must start with alphabetics and less than 40 characters'
+            errorLigne.current.innerText = 'Votre prénom doit commencer par une lettre et contenir moins de 40 caractères.'
         }else if(!namesRegex.test(lastName.current.value) ){
-            errorLigne.current.innerText = 'your Last name must start with alphabetics and less than 40 characters'
+            errorLigne.current.innerText = 'Votre nom de famille doit commencer par une lettre et contenir moins de 40 caractères.'
         }else if(!usernameRegex.test(username.current.value)){
-            errorLigne.current.innerText = 'your username must start with alphabetics and between 8 and 32 characters'
+            errorLigne.current.innerText = 'Votre nom d\'utilisateur doit commencer par une lettre et contenir entre 8 et 32 caractères.'
         }else if(!passwordRegex.test(password.current.value)){
-            errorLigne.current.innerText = 'your password must be longer than 8 and contain numbers plus alphabetics'
+            errorLigne.current.innerText = 'Votre mot de passe doit contenir plus de 8 caractères et inclure des lettres et des chiffres.'
         }
         else if(password.current.value != confirmPass.current.value){
-            errorLigne.current.innerText = 'your password confirmation doesnt mach youe confirmation'
+            errorLigne.current.innerText = 'Votre confirmation de mot de passe ne correspond pas'
         }
         else{
             changingButtonAppearance('active')
@@ -84,16 +84,16 @@ function SignUp() {
     return (
             <div className="min-h-screen flex items-center justify-center bg-gray-50">
             <div className="max-w-md w-full p-6 rounded-lg shadow-lg bg-[#3AAFA7]">
-                <h2 className="text-center text-3xl font-extrabold text-gray-900">Sign up for an account</h2>
+                <h2 className="text-center text-3xl font-extrabold text-gray-900">Inscrit Un Compte</h2>
                 <form className="flex flex-col mt-8 space-y-6 h-72 justify-evenly" onSubmit={signUp}>
                 <div className="rounded-md shadow-sm -space-y-px">
                     <div>
-                        <label htmlFor="first-name" className="sr-only" >First Name</label>
-                        <input ref={firstName} onInput={validationSignUp} id="first-name" name="first-name" type="text" autoComplete="prenom" required className="appearance-none rounded-t-xl relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="First Name" />
+                        <label htmlFor="first-name" className="sr-only" >Prénom</label>
+                        <input ref={firstName} onInput={validationSignUp} id="first-name" name="first-name" type="text" autoComplete="prenom" required className="appearance-none rounded-t-xl relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Prénom" />
                     </div>
                     <div>
                         <label htmlFor="last-name" className="sr-only">Last Name</label>
-                        <input ref={lastName} onInput={validationSignUp} id="last-name" name="last-name" type="text" autoComplete="nom" required className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Last Name" />
+                        <input ref={lastName} onInput={validationSignUp} id="last-name" name="last-name" type="text" autoComplete="nom" required className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 bg-[#DEF2F1] text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="nom" />
                     </div>
                     <div>
                         <label htmlFor="username" className="sr-only">Email address</label>
@@ -110,7 +110,7 @@ function SignUp() {
                 </div>
                 <div>
                     <button type="submit" ref={signUpBtn} className="w-full py-2 px-4 bg-[#17252A] hover:bg-indigo-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" disabled={isBtnDisabled}>
-                    Sign up
+                    Inscrire
                     </button>
                 </div>
                 </form>

@@ -48,10 +48,6 @@ function Main() {
           <Image src={'/entertainement.jpeg'} alt="entertainement" width={120} height={110} className="mb-4 rounded-full" />
           <div className="text-xl font-semibold">Entertainement</div>
         </div>
-        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
-          <Image src={workshop} alt="workshop" width={120} height={120} className="mb-4 rounded-full" />
-          <div className="text-xl font-semibold">Workshops</div>
-        </div>
       </div>
     </div>
   </section>

@@ -35,8 +35,8 @@ function SignIn() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full p-6 rounded-lg shadow-lg bg-[#3AAFA7]">
-        <h2 className="text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+      <div className=" max-w-lg w-full p-6 rounded-lg shadow-lg bg-[#3AAFA7]">
+        <h2 className="text-center text-3xl font-extrabold text-gray-900">Connecter Avec Un Compte</h2>
         <form onSubmit={handleSubmit} className="flex flex-col mt-8 space-y-6 h-72 justify-evenly">
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -51,7 +51,7 @@ function SignIn() {
 
           <div>
             <button type="submit" className="w-full py-2 px-4 bg-[#17252A] hover:bg-indigo-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Sign in
+              Connecter
             </button>
           </div>
         </form>

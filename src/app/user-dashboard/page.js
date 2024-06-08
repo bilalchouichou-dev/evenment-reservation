@@ -29,7 +29,7 @@ function dashboard() {
 
     useEffect(()=>{
         if(session&&session.user.role == 'admin'){
-            setUnauthenticatedMsg("les admins non pas d'accées a cette page")
+            setUnauthenticatedMsg("les admins non pas d'accées a cette page. Redirection dans 3 secondes.")
             const timer = setTimeout(() => {
                 router.push('/sign-in');
             }, 3000);
