@@ -40,7 +40,7 @@ function EventHeader() {
             <ul ref={profileOptionsRef} className="absolute z-40 bg-[#DEF2F1] text-black rounded-lg p-1 top-5 right-4 font-semibold text-start">
               <li className='text-center mb-2 p-2 rounded-lg w-4/6'>{session.user.username}</li>
               <li>
-                <Link href='#' className="flex gap-2 items-center mb-2 hover:bg-gray-200 p-2 rounded-lg">
+                <Link href={session.user.role=='user'?('/user-dashboard'):session.user.role=='admin'?('/admin-dashboard'):null} className="flex gap-2 items-center mb-2 hover:bg-gray-200 p-2 rounded-lg">
                   <FontAwesomeIcon icon={faUser} className=" h-5 w-5"/>
                   <span>dashboard</span>
                 </Link> 

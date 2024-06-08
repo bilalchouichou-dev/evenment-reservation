@@ -16,9 +16,11 @@ function EventsMain() {
   const router = useRouter()
   const [eventsData,setEventsData] = useState(null)
   const [loading, setLoading] = useState(true);
+  const [feedback,setFeedback]= useState(true);
   const searchParams = useSearchParams();
   useEffect(()=>{setLoading(true)},[searchParams])
   useEffect(()=> {
+    setEventsData(null)
     const search = searchParams.get('search')
     const prix = searchParams.get('prix')
     const date = searchParams.get('date')
@@ -35,6 +37,10 @@ function EventsMain() {
               return response.json();
             })
             .then(data => {
+              if(!data || data==undefined || data.length == 0)
+              {
+                    setFeedback('il existe pas d\'évènement avec les infos fourni')
+              } 
               setEventsData(data);
               router.refresh();
             })
@@ -51,8 +57,12 @@ function EventsMain() {
               return response.json();
             })
             .then(data => {
-              setEventsData(data);
+              if(!data || data==undefined || data.length == 0)
+              {
+                    setFeedback('il existe pas d\'évènement avec les infos fourni')
+              } 
               console.log("this is data from search: ", data);
+              setEventsData(data);
             })
             .catch(error => {
               console.error("Error:", error);
@@ -68,8 +78,12 @@ function EventsMain() {
               return response.json();
             })
             .then(data => {
+              if(!data || data==undefined || data.length == 0)
+              {
+                  setFeedback('événement introuvable')
+              } 
               console.log('this is data :   =>=>=>=> \'' + data + '\'')
-              setEventsData(data);
+              setEventsData(data); 
             })
             .catch(error => {
               console.error("Error:", error);
@@ -101,7 +115,7 @@ function EventsMain() {
         ):(
           <div className="grid gap-6 p-5 gap-y-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full h-fit">
               {/*<EventCard id={10} titre={"arabic games awards"} ville={"fes"} date={"10/12/2024"} imageSrc={festival}/>*/}
-              {eventsData && eventsData.map((event, index) => (
+              {eventsData&&eventsData.map((event, index) => (
                 <EventCard
                   productId={event.idevent}
                   key={index}  
@@ -111,6 +125,7 @@ function EventsMain() {
                   date={event.date} 
                   {...event.imageid && { imageId: event.imageid }} />
               ))}
+              {!eventsData || (eventsData&&eventsData.length == 0)&&(<p className=" text-red-400 absolute top-96 right-96 font-bold text-2xl">{feedback}</p>)}
           </div>
       )}
     </main>

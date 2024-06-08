@@ -28,26 +28,36 @@ function Main() {
 
     <div className="flex justify-between items-center w-fit">
       <div className="flex justify-between items-center gap-6 text-center text-[#17252A] ">
-        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
-          <Image src={concert} alt="Concert" width={120} height={120} className="mb-4 rounded-full" />
-          <div className="text-xl font-semibold">Concerts</div>
-        </div>
-        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
-          <Image src={festival} alt="Festivals" width={120} height={120} className="mb-4 rounded-full" />
-          <div className="text-xl font-semibold">Festivals</div>
-        </div>
-        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
-          <Image src={sport} alt="Sports" width={120} height={120} className="mb-4 rounded-full" />
-          <div className="text-xl font-semibold">Sports</div>
-        </div>
-        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
-          <Image src={workshop} alt="workshop" width={120} height={120} className="mb-4 rounded-full" />
-          <div className="text-xl font-semibold">Workshops</div>
-        </div>
-        <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
-          <Image src={'/entertainement.jpeg'} alt="entertainement" width={120} height={110} className="mb-4 rounded-full" />
-          <div className="text-xl font-semibold">Entertainement</div>
-        </div>
+        <Link href='/events?categorie=Music%20Concert'>
+          <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+            <Image src={concert} alt="Concert" width={120} height={120} className="mb-4 rounded-full" />
+            <div className="text-xl font-semibold">Concerts</div>
+          </div>
+        </Link>
+        <Link href='/events?categorie=Music%20Festival'>
+          <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+            <Image src={festival} alt="Festivals" width={120} height={120} className="mb-4 rounded-full" />
+            <div className="text-xl font-semibold">Festivals</div>
+          </div>
+        </Link>
+        <Link href='/events?categorie=Sports'>
+          <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+            <Image src={sport} alt="Sports" width={120} height={120} className="mb-4 rounded-full" />
+            <div className="text-xl font-semibold">Sports</div>
+          </div>
+        </Link>
+        <Link href='/events?categorie=Business'>
+          <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+            <Image src={workshop} alt="workshop" width={120} height={120} className="mb-4 rounded-full" />
+            <div className="text-xl font-semibold">Business</div>
+          </div>
+        </Link>
+        <Link href='/events?categorie=Entertainment'>
+          <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
+            <Image src={'/entertainement.jpeg'} alt="entertainement" width={120} height={110} className="mb-4 rounded-full" />
+            <div className="text-xl font-semibold">Entertainement</div>
+          </div>
+        </Link>
       </div>
     </div>
   </section>
