@@ -62,7 +62,7 @@ function Form({session}) {
                     <input ref={prenomRef} type="text" id="prenom" name="prenom" className="shadow-sm appearance-none border border-gray-300 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Votre prénom" required defaultValue={session&&session.user.prenom}/>
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="username" className="block text-gray-700 text-sm font-medium mb-2">Nom d'utilisateur</label>
+                    <label htmlFor="username" className="block text-gray-700 text-sm font-medium mb-2">Nom d&apos;utilisateur</label>
                     <input ref={usernameRef} type="text" id="username" name="username" className="shadow-sm appearance-none border border-gray-300 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Votre nom d'utilisateur" required defaultValue={session&&session.user.username}/>
                 </div>
                 <div className="flex items-center justify-center gap-6">

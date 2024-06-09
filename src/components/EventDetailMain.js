@@ -24,7 +24,7 @@ function EventsMain({ titre, ville, images, date, prix, location, description, p
                                 alt="Image de l'événement"
                                 className="w-full h-[30rem] object-center rounded-xl"
                             />
-                        )):(<p className=" text-center font-semibold text-red-700">désolé il n'existe pas d'images pour le moment</p>)}
+                        )):(<p className=" text-center font-semibold text-red-700">désolé il n&apos;existe pas d&apos;images pour le moment</p>)}
                     </span>
                     <FontAwesomeIcon icon={faChevronRight} className=" h-10 w-10 hover:scale-125 hover:cursor-pointer"/>
                 </div>

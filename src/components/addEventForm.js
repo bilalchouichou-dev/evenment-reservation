@@ -102,7 +102,7 @@ function Form({session,categories,villes }) {
           <textarea ref={descriptionRef} id="description" name="description" className="shadow-sm appearance-none border border-gray-300 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" rows="4" placeholder="description" required defaultValue={session && session.user.description}></textarea>
         </div>
         <div className="flex items-center justify-center gap-6">
-          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">Ajouter L'événement</button>
+          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">Ajouter L&apos;événement</button>
           <button type="reset" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">Réinitialiser</button>
         </div>
         <p className='font-semibold text-center text-lg p-4' ref={feedbackRef}>{feedback}</p>
