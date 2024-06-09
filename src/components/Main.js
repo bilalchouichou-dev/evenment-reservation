@@ -54,7 +54,7 @@ function Main() {
         </Link>
         <Link href='/events?categorie=Entertainment'>
           <div className="flex flex-col items-center rounded-lg p-4 shadow-xl bg-[#3AAFA7] transition-transform hover:scale-105 hover:cursor-pointer w-52">
-            <Image src={'/entertainement.png'} alt="entertainement" width={120} height={110} className="mb-4 rounded-full" />
+            <Image src={'/Entertainement.jpeg'} alt="entertainement" width={120} height={120} className="mb-4 rounded-full" />
             <div className="text-xl font-semibold">Entertainement</div>
           </div>
         </Link>
