@@ -16,10 +16,9 @@ const EventTable = ({session,events,categories,villes}) => {
 
     const [eventId,setEventId] = useState()
     const [eventToModify,setEventToModify] = useState(null)
-    const [count, setCount] = useState(0);
 
     const refreshPage = () => {
-      setCount(prevCount => prevCount + 1);
+      window.location.reload()
     };
     const supprimerEvent = (id)=>{
       const deletedEvent = {
