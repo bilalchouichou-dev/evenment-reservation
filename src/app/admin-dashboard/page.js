@@ -14,7 +14,7 @@ import AddEventFrom from '@/components/addEventForm';
 import { useSession } from "next-auth/react";
 
 
-function dashboard() {
+function Dashboard() {
     const [villeList,setVilleList] = useState(null)
     const [categories,setCategories] = useState(null)
     const router = useRouter()
@@ -128,6 +128,6 @@ function dashboard() {
         </>
     )
 }
-export default dashboard;
+export default Dashboard;
 
 
