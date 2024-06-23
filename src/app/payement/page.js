@@ -20,7 +20,7 @@ function App() {
           
           <div className="flex space-x-4">
             <div className="form-group w-1/2">
-              <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700">Date d'expiration</label>
+              <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700">Date expiration</label>
               <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
             </div>
             
