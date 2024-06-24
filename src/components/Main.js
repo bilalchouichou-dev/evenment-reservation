@@ -9,7 +9,7 @@ import workshop from "@/../public/workshop.jpg";
 
 function Main() {
   return (
-    <main className="flex flex-col items-center justify-center">
+  <main className="flex flex-col items-center justify-center">
   <section className="flex flex-col items-center justify-center gap-14 pt-32 pb-32 text-white bg-[#3AAFA7] min-h-[43rem]">
     <div className="flex flex-col items-center justify-center gap-7 w-2/3 text-start">
       <h1 className="font-serif text-4xl font-semibold leading-snug">
